@@ -2,7 +2,7 @@
 <html lang="zh-CN">
  <head>
      <meta charset="utf-8" />
-  <title>对象的概念 | theNefelibata</title>
+  <title>LeetCode 最长公共子序列 | theNefelibata</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <link rel="stylesheet" href="https://theNefelibata.github.io//styles/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -81,44 +81,48 @@
      <div class="post-page">
       <div class="post animated fadeInDown">
        <div class="post-title">
-        <h3><a>对象的概念</a></h3>
+        <h3><a>LeetCode 最长公共子序列</a></h3>
        </div>
        <div class="post-content">
-        <h2 id="抽象">抽象</h2>
-<ol>
-<li><strong>万物皆对象</strong>。你可以将对象想象成一种特殊的变量。它存储数据，但可以在你对其“发出请求”时执行本身的操作。理论上讲，你总是可以从要解决的问题身上抽象出概念性的组件，然后在程序中将其表示为一个对象。</li>
-<li><strong>程序是一组对象，通过消息传递来告知彼此该做什么</strong>。要请求调用一个对象的方法，你需要向该对象发送消息。</li>
-<li><strong>每个对象都有自己的存储空间，可容纳其他对象</strong>。或者说，通过封装现有对象，可制作出新型对象。所以，尽管对象的概念非常简单，但在程序中却可达到任意高的复杂程度。</li>
-<li><strong>每个对象都有一种类型</strong>。根据语法，每个对象都是某个“类”的一个“实例”。其中，“类”（Class）是“类型”（Type）的同义词。一个类最重要的特征就是“能将什么消息发给它？”。</li>
-<li><strong>同一类所有对象都能接收相同的消息</strong>。这实际是别有含义的一种说法，大家不久便能理解。由于类型为“圆”（Circle）的一个对象也属于类型为“形状”（Shape）的一个对象，所以一个圆完全能接收发送给&quot;形状”的消息。这意味着可让程序代码统一指挥“形状”，令其自动控制所有符合“形状”描述的对象，其中自然包括“圆”。这一特性称为对象的“可替换性”，是OOP最重要的概念之一。</li>
-</ol>
-<h2 id="封装">封装</h2>
-<p>研发程序员开发一个工具类，该工具类仅向应用程序员公开必要的内容，并隐藏内部实现的细节。这样可以有效地避免该工具类被错误的使用和更改，从而减少程序出错的可能。彼此职责划分清晰，相互协作。Java 有三个显式关键字来设置类中的访问权限：<code>public</code>（公开），<code>private</code>（私有）和<code>protected</code>（受保护）。这些访问修饰符决定了谁能使用它们修饰的方法、变量或类。</p>
+        <!-- more -->
+<h2 id="题目描述">题目描述</h2>
+<p>给定两个字符串 text1   和 text2，返回这两个字符串的最长 公共子序列 的长度。如果不存在 公共子序列 ，返回 0 。<br>
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。<br>
+例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。<br>
+两个字符串的 公共子序列 是这两个字符串所共同拥有的子序列。</p>
+<h2 id="题解">题解</h2>
+<p>这是一道典型的线性规划，定义数组dp[i][j] 为text1[0:i]和text2[0:j]最长公共子序列的长度。</p>
 <ul>
-<li>
-<p><code>public</code>（公开）表示任何人都可以访问和使用该元素；</p>
-</li>
-<li>
-<p><code>private</code>（私有）除了类本身和类内部的方法，外界无法直接访问该元素。private 是类和调用者之间的屏障。任何试图访问私有成员的行为都会报编译时错误；</p>
-</li>
-<li>
-<p><code>protected</code>（受保护）类似于 private，区别是子类（下一节就会引入继承的概念）可以访问 protected 的成员，但不能访问 private 成员；</p>
-</li>
-<li>
-<p><code>default</code>（默认）如果你不使用前面的三者，默认就是 default 访问权限。default 被称为包访问，因为该权限下的资源可以被同一包（库组件）中其他类的成员访问。</p>
-</li>
+<li>如果text1[i] == text2[j]，那么dp[i][j]就是dp[i-1][j-1]+1</li>
+<li>如果text1[i] != text2[j]，那么dp[i][j]就是text1[0:i]和text2[0:j-1]的最长公共子序列 和 text1[0:i-1]和text2[0:j]的最长公共子序列 中最大的那个。</li>
 </ul>
-<h2 id="复用">复用</h2>
+<figure data-type="image" tabindex="1"><img src="https://theNefelibata.github.io//post-images/1617460209274.jpg" alt="" loading="lazy"></figure>
+<h2 id="代码">代码</h2>
+<pre><code class="language-python">class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -&gt; int:
+        m = len(text1)
+        n = len(text2)
+        dp = [[0]*(n + 1) for _ in range(m + 1)]
+
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if text1[i-1] == text2[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = max(dp[i][j-1], dp[i-1][j])
+            
+        return dp[m][n]
+</code></pre>
 
        </div>
        <div class="post-footer">
         <div class="meta">
          <div class="info">
           <i class="fa fa-sun-o"></i>
-          <span class="date">2021-03-02</span>
+          <span class="date">2021-04-03</span>
           <i class="fa fa-tag"></i>
           
-          <a class="tag" href="https://theNefelibata.github.io/tag/SQR1Z4u-b/" title="Java">Java </a>
+          <a class="tag" href="https://theNefelibata.github.io/tag/jPPt7ANbM/" title="leetcode">leetcode </a>
           
          </div>
         </div>
@@ -132,14 +136,14 @@
         <a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a>
        </div>
        <div class="twitter">
-        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://theNefelibata.github.io/post/dui-xiang-de-gai-nian/,;"></a>
+        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://theNefelibata.github.io/post/leetcode-zui-chang-gong-gong-zi-xu-lie/,;"></a>
        </div>
       </div>
       <div class="pagination">
        <ul class="clearfix">
 
-        <li class="pre pagbuttons"><a class="btn" role="navigation" href="https://theNefelibata.github.io/post/java-ji-chu/" title="java基础">上一篇</a></li>
-         
+        
+        <li class="next pagbuttons"><a class="btn" role="navigation" href="https://theNefelibata.github.io/post/java-ji-chu/" title=" java基础">下一篇</a></li>
         
        </ul>
       </div>
