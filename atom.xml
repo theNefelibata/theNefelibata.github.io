@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://theNefelibata.github.io/</id>
     <title>theNefelibata</title>
-    <updated>2021-04-03T15:03:13.678Z</updated>
+    <updated>2021-04-03T17:56:17.182Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://theNefelibata.github.io/"/>
     <link rel="self" href="https://theNefelibata.github.io/atom.xml"/>
@@ -10,6 +10,53 @@
     <logo>https://theNefelibata.github.io/images/avatar.png</logo>
     <icon>https://theNefelibata.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, theNefelibata</rights>
+    <entry>
+        <title type="html"><![CDATA[LeetCode 森林中的兔子]]></title>
+        <id>https://theNefelibata.github.io/post/leetcode-sen-lin-zhong-de-tu-zi/</id>
+        <link href="https://theNefelibata.github.io/post/leetcode-sen-lin-zhong-de-tu-zi/">
+        </link>
+        <updated>2021-04-03T17:55:34.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="题目描述">题目描述</h2>
+<p>森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。</p>
+<p>返回森林中兔子的最少数量。</p>
+<pre><code>示例:
+输入: answers = [1, 1, 2]
+输出: 5
+解释:
+两只回答了 &quot;1&quot; 的兔子可能有相同的颜色，设为红色。
+之后回答了 &quot;2&quot; 的兔子不会是红色，否则他们的回答会相互矛盾。
+设回答了 &quot;2&quot; 的兔子为蓝色。
+此外，森林中还应有另外 2 只蓝色兔子的回答没有包含在数组中。
+因此森林中兔子的最少数量是 5: 3 只回答的和 2 只没有回答的。
+
+输入: answers = [10, 10, 10]
+输出: 11
+
+输入: answers = []
+输出: 0
+</code></pre>
+<h2 id="题解">题解</h2>
+<p>某种颜色的兔子数等于那种颜色兔子的回答数+1，颜色相同的兔子的回答一定相同，基于这两个特征，我们要求最少的兔子数量，我们可以认为回答相同的兔子属于一种颜色，此时我们只需统计出回答相同的兔子的数量，分配颜色即可，示意图如下：<br>
+<img src="https://theNefelibata.github.io//post-images/1617472566346.jpg" alt="" loading="lazy"></p>
+<h2 id="代码">代码</h2>
+<pre><code class="language-python">class Solution:
+	def numRabbits(self, answers: List[int]) -&gt; int:
+	cnt = {}
+	ans = 0
+	for i in answers:
+		if i not in cnt.keys():
+			cnt[i] = 1
+		else:
+			cnt[i] += 1
+	for k, v in cnt.items():
+		ans += (v // (k+1)) * (k + 1)
+		if (v % (k+1)) != 0 :
+			ans += k + 1
+
+	return ans
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode 最长公共子序列]]></title>
         <id>https://theNefelibata.github.io/post/leetcode-zui-chang-gong-gong-zi-xu-lie/</id>

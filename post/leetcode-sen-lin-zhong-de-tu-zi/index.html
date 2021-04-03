@@ -2,7 +2,7 @@
 <html lang="zh-CN">
  <head>
      <meta charset="utf-8" />
-  <title>关于 | theNefelibata</title>
+  <title>LeetCode 森林中的兔子 | theNefelibata</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <link rel="stylesheet" href="https://theNefelibata.github.io//styles/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -81,27 +81,55 @@
      <div class="post-page">
       <div class="post animated fadeInDown">
        <div class="post-title">
-        <h3><a>关于</a></h3>
+        <h3><a>LeetCode 森林中的兔子</a></h3>
        </div>
        <div class="post-content">
-        <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>本站为博主记录学习笔记的场所，有时候可能也会更新一些日记之类的记录生活</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>一个普通人</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>游戏、音乐、技术</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>QQ：735213383</p>
+        <h2 id="题目描述">题目描述</h2>
+<p>森林中，每个兔子都有颜色。其中一些兔子（可能是全部）告诉你还有多少其他的兔子和自己有相同的颜色。我们将这些回答放在 answers 数组里。</p>
+<p>返回森林中兔子的最少数量。</p>
+<pre><code>示例:
+输入: answers = [1, 1, 2]
+输出: 5
+解释:
+两只回答了 &quot;1&quot; 的兔子可能有相同的颜色，设为红色。
+之后回答了 &quot;2&quot; 的兔子不会是红色，否则他们的回答会相互矛盾。
+设回答了 &quot;2&quot; 的兔子为蓝色。
+此外，森林中还应有另外 2 只蓝色兔子的回答没有包含在数组中。
+因此森林中兔子的最少数量是 5: 3 只回答的和 2 只没有回答的。
+
+输入: answers = [10, 10, 10]
+输出: 11
+
+输入: answers = []
+输出: 0
+</code></pre>
+<h2 id="题解">题解</h2>
+<p>某种颜色的兔子数等于那种颜色兔子的回答数+1，颜色相同的兔子的回答一定相同，基于这两个特征，我们要求最少的兔子数量，我们可以认为回答相同的兔子属于一种颜色，此时我们只需统计出回答相同的兔子的数量，分配颜色即可，示意图如下：<br>
+<img src="https://theNefelibata.github.io//post-images/1617472566346.jpg" alt="" loading="lazy"></p>
+<h2 id="代码">代码</h2>
+<pre><code class="language-python">class Solution:
+	def numRabbits(self, answers: List[int]) -&gt; int:
+	cnt = {}
+	ans = 0
+	for i in answers:
+		if i not in cnt.keys():
+			cnt[i] = 1
+		else:
+			cnt[i] += 1
+	for k, v in cnt.items():
+		ans += (v // (k+1)) * (k + 1)
+		if (v % (k+1)) != 0 :
+			ans += k + 1
+
+	return ans
+</code></pre>
 
        </div>
        <div class="post-footer">
         <div class="meta">
          <div class="info">
           <i class="fa fa-sun-o"></i>
-          <span class="date">2019-01-25</span>
+          <span class="date">2021-04-04</span>
           <i class="fa fa-tag"></i>
           
          </div>
@@ -116,12 +144,14 @@
         <a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a>
        </div>
        <div class="twitter">
-        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://theNefelibata.github.io/post/about/,;"></a>
+        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://theNefelibata.github.io/post/leetcode-sen-lin-zhong-de-tu-zi/,;"></a>
        </div>
       </div>
       <div class="pagination">
        <ul class="clearfix">
 
+        
+        <li class="next pagbuttons"><a class="btn" role="navigation" href="https://theNefelibata.github.io/post/leetcode-zui-chang-gong-gong-zi-xu-lie/" title=" LeetCode 最长公共子序列">下一篇</a></li>
         
        </ul>
       </div>
