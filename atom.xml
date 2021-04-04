@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://theNefelibata.github.io/</id>
     <title>theNefelibata</title>
-    <updated>2021-04-03T18:29:12.702Z</updated>
+    <updated>2021-04-04T09:50:57.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://theNefelibata.github.io/"/>
     <link rel="self" href="https://theNefelibata.github.io/atom.xml"/>
@@ -10,6 +10,172 @@
     <logo>https://theNefelibata.github.io/images/avatar.png</logo>
     <icon>https://theNefelibata.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, theNefelibata</rights>
+    <entry>
+        <title type="html"><![CDATA[Git基础]]></title>
+        <id>https://theNefelibata.github.io/post/git-ji-chu/</id>
+        <link href="https://theNefelibata.github.io/post/git-ji-chu/">
+        </link>
+        <updated>2021-04-04T09:45:32.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="版本管理和git的设计">版本管理和Git的设计</h2>
+<h3 id="版本管理的需求">版本管理的需求</h3>
+<figure data-type="image" tabindex="1"><img src="https://theNefelibata.github.io//post-images/1617529645552.jpg" alt="" loading="lazy"></figure>
+<ul>
+<li><em><strong>时间机器</strong></em>：
+<ul>
+<li>全量方案：保存项目的每一个版本的完整信息</li>
+<li>增量方案：保存每一版的修改，版本一+补丁=版本二<br>
+|  | 优点 | 缺点 |使用场景<br>
+| :-: | :-: | :-: |:-:<br>
+| 全量方案 | 简单、快速 | 重复存储，浪费空间 | 代码，文本<br>
+| 增量方案 | 存储空间小 | 需要运算，降低了性能，增加了运算时间|视频，大型二进制文件<br>
+<img src="https://theNefelibata.github.io//post-images/1617529669702.jpg" alt="" loading="lazy"><br>
+系统记录了每一个修改版本的完整信息，存储在.git中</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>文件命名</strong></em><br>
+使用文件的SHA-1值来命名文件。<br>
+<img src="https://theNefelibata.github.io//post-images/1617529678048.jpg" alt="" loading="lazy"></p>
+<h3 id="tree结构和暂存区">Tree结构和暂存区</h3>
+<p><img src="https://theNefelibata.github.io//post-images/1617529699670.jpg" alt="" loading="lazy"><br>
+<em><strong>目录结构和对应关系</strong></em><br>
+<img src="https://theNefelibata.github.io//post-images/1617529689632.jpg" alt="" loading="lazy"><br>
+Tree是文件夹，blob是二进制文件<br>
+<img src="https://theNefelibata.github.io//post-images/1617529709801.jpg" alt="" loading="lazy"><br>
+<em><strong>暂存区</strong></em><br>
+文件状态<br>
+<img src="https://theNefelibata.github.io//post-images/1617529730491.jpg" alt="" loading="lazy"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">code</th>
+<th style="text-align:center">index</th>
+<th style="text-align:center">SHA-1</th>
+<th style="text-align:center">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">在</td>
+<td style="text-align:center">在</td>
+<td style="text-align:center">不匹配</td>
+<td style="text-align:center">modified</td>
+</tr>
+<tr>
+<td style="text-align:center">不存在</td>
+<td style="text-align:center">在</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">removed</td>
+</tr>
+<tr>
+<td style="text-align:center">在</td>
+<td style="text-align:center">不存在</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">added</td>
+</tr>
+</tbody>
+</table>
+<h3 id="协同和分支">协同和分支</h3>
+<p><em><strong>分布式的版本控制</strong></em><br>
+每个人的电脑上都存放一个完整的版本仓库<br>
+<em><strong>冲突和合并</strong></em><br>
+如果两个人修改了同一个文件File1，第一个人push，没有问题，第二个外人push，会提示File1冲突，需要解决冲突再提交</p>
+<p><img src="https://theNefelibata.github.io//post-images/1617529758128.jpg" alt="" loading="lazy"><br>
+<em><strong>分支</strong></em><br>
+<img src="https://theNefelibata.github.io//post-images/1617529812308.jpg" alt="" loading="lazy"><br>
+<em><strong>合并</strong></em><br>
+merge、rebase、cherry-pick</p>
+<h2 id="常用git命令">常用Git命令</h2>
+<ul>
+<li><code>git init</code>
+<ul>
+<li>git初始化命令</li>
+<li>将一个文件夹初始化为git仓库</li>
+</ul>
+</li>
+<li><code>git add filename</code>
+<ul>
+<li><code>git add ./*</code> 将所有文件添加到暂存区</li>
+<li>将filename文件添加到暂存区</li>
+</ul>
+</li>
+<li><code>git status</code>
+<ul>
+<li>查看暂存区状态</li>
+</ul>
+</li>
+<li><code>git reset HEAD--a.txt</code>
+<ul>
+<li>将文件移出暂存区</li>
+</ul>
+</li>
+<li><code>git cat-file -p SHA-1</code>
+<ul>
+<li>查看SHA-1文件内容</li>
+</ul>
+</li>
+<li><code>git ls-files --stage</code>
+<ul>
+<li>查看暂存区内容</li>
+</ul>
+</li>
+<li><code>git commit -m ‘ ‘</code>
+<ul>
+<li>将暂存区文件提交到git仓库</li>
+</ul>
+</li>
+<li><code>git branch name</code>
+<ul>
+<li>创建一个名为name的分支</li>
+</ul>
+</li>
+<li><code>git checkout name</code>
+<ul>
+<li>切换到某个分支</li>
+<li>回到某个历史分支<code>git checkout SHA-1</code></li>
+<li><code>git checkout -b name</code> 创建一个分支并切换到分支</li>
+</ul>
+</li>
+<li><code>git merge branch-name</code>
+<ul>
+<li>将分支branch-name合并到当前分支</li>
+</ul>
+</li>
+<li>合并失败：
+<ul>
+<li><code>git merge --abort</code>放弃合并</li>
+<li>手动解决冲突后再提交，然后合并</li>
+</ul>
+</li>
+<li><code>git log</code>
+<ul>
+<li>查看git日志</li>
+</ul>
+</li>
+<li><code>git pull (origin main)</code>
+<ul>
+<li>将远程仓库的内容合并到本地仓库</li>
+</ul>
+</li>
+<li><code>git push</code>
+<ul>
+<li>将本地仓库的内容push到远程仓库</li>
+</ul>
+</li>
+<li><code>git stash</code>
+<ul>
+<li>将当前修改放入一个列表
+<ul>
+<li><code>git stash list</code></li>
+<li><code>git stash apply</code></li>
+</ul>
+</li>
+<li><code>git stash show/drop/clear</code></li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode 森林中的兔子]]></title>
         <id>https://theNefelibata.github.io/post/leetcode-sen-lin-zhong-de-tu-zi/</id>
