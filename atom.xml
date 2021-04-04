@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://theNefelibata.github.io/</id>
+    <id>http://localhost:4000</id>
     <title>theNefelibata</title>
-    <updated>2021-04-04T09:56:04.853Z</updated>
+    <updated>2021-04-04T09:56:08.614Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://theNefelibata.github.io/"/>
-    <link rel="self" href="https://theNefelibata.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://theNefelibata.github.io/images/avatar.png</logo>
-    <icon>https://theNefelibata.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, theNefelibata</rights>
     <entry>
         <title type="html"><![CDATA[Git基础]]></title>
-        <id>https://theNefelibata.github.io/post/git-ji-chu/</id>
-        <link href="https://theNefelibata.github.io/post/git-ji-chu/">
+        <id>http://localhost:4000/post/git-ji-chu/</id>
+        <link href="http://localhost:4000/post/git-ji-chu/">
         </link>
         <updated>2021-04-04T09:45:32.000Z</updated>
         <content type="html"><![CDATA[<h2 id="版本管理和git的设计">版本管理和Git的设计</h2>
 <h3 id="版本管理的需求">版本管理的需求</h3>
-<figure data-type="image" tabindex="1"><img src="https://theNefelibata.github.io//post-images/1617529645552.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1617529645552.jpg" alt="" loading="lazy"></figure>
 <ul>
 <li><em><strong>时间机器</strong></em>：
 <ul>
@@ -51,20 +51,20 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://theNefelibata.github.io//post-images/1617529669702.jpg" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1617529669702.jpg" alt="" loading="lazy"><br>
 系统记录了每一个修改版本的完整信息，存储在.git中</p>
 <p><em><strong>文件命名</strong></em><br>
 使用文件的SHA-1值来命名文件。<br>
-<img src="https://theNefelibata.github.io//post-images/1617529678048.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1617529678048.jpg" alt="" loading="lazy"></p>
 <h3 id="tree结构和暂存区">Tree结构和暂存区</h3>
-<p><img src="https://theNefelibata.github.io//post-images/1617529699670.jpg" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1617529699670.jpg" alt="" loading="lazy"><br>
 <em><strong>目录结构和对应关系</strong></em><br>
-<img src="https://theNefelibata.github.io//post-images/1617529689632.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1617529689632.jpg" alt="" loading="lazy"><br>
 Tree是文件夹，blob是二进制文件<br>
-<img src="https://theNefelibata.github.io//post-images/1617529709801.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1617529709801.jpg" alt="" loading="lazy"><br>
 <em><strong>暂存区</strong></em><br>
 文件状态<br>
-<img src="https://theNefelibata.github.io//post-images/1617529730491.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1617529730491.jpg" alt="" loading="lazy"></p>
 <table>
 <thead>
 <tr>
@@ -100,9 +100,9 @@ Tree是文件夹，blob是二进制文件<br>
 每个人的电脑上都存放一个完整的版本仓库<br>
 <em><strong>冲突和合并</strong></em><br>
 如果两个人修改了同一个文件File1，第一个人push，没有问题，第二个外人push，会提示File1冲突，需要解决冲突再提交</p>
-<p><img src="https://theNefelibata.github.io//post-images/1617529758128.jpg" alt="" loading="lazy"><br>
+<p><img src="http://localhost:4000/post-images/1617529758128.jpg" alt="" loading="lazy"><br>
 <em><strong>分支</strong></em><br>
-<img src="https://theNefelibata.github.io//post-images/1617529812308.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1617529812308.jpg" alt="" loading="lazy"><br>
 <em><strong>合并</strong></em><br>
 merge、rebase、cherry-pick</p>
 <h2 id="常用git命令">常用Git命令</h2>
@@ -198,8 +198,8 @@ merge、rebase、cherry-pick</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode 森林中的兔子]]></title>
-        <id>https://theNefelibata.github.io/post/leetcode-sen-lin-zhong-de-tu-zi/</id>
-        <link href="https://theNefelibata.github.io/post/leetcode-sen-lin-zhong-de-tu-zi/">
+        <id>http://localhost:4000/post/leetcode-sen-lin-zhong-de-tu-zi/</id>
+        <link href="http://localhost:4000/post/leetcode-sen-lin-zhong-de-tu-zi/">
         </link>
         <updated>2021-04-03T17:55:34.000Z</updated>
         <content type="html"><![CDATA[<h2 id="题目描述">题目描述</h2>
@@ -223,7 +223,7 @@ merge、rebase、cherry-pick</p>
 </code></pre>
 <h2 id="题解">题解</h2>
 <p>某种颜色的兔子数等于那种颜色兔子的回答数+1，颜色相同的兔子的回答一定相同，基于这两个特征，我们要求最少的兔子数量，我们可以认为回答相同的兔子属于一种颜色，此时我们只需统计出回答相同的兔子的数量，分配颜色即可，示意图如下：<br>
-<img src="https://theNefelibata.github.io//post-images/1617472566346.jpg" alt="" loading="lazy"></p>
+<img src="http://localhost:4000/post-images/1617472566346.jpg" alt="" loading="lazy"></p>
 <h2 id="代码">代码</h2>
 <pre><code class="language-python">class Solution:
 	def numRabbits(self, answers: List[int]) -&gt; int:
@@ -245,8 +245,8 @@ merge、rebase、cherry-pick</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode 最长公共子序列]]></title>
-        <id>https://theNefelibata.github.io/post/leetcode-zui-chang-gong-gong-zi-xu-lie/</id>
-        <link href="https://theNefelibata.github.io/post/leetcode-zui-chang-gong-gong-zi-xu-lie/">
+        <id>http://localhost:4000/post/leetcode-zui-chang-gong-gong-zi-xu-lie/</id>
+        <link href="http://localhost:4000/post/leetcode-zui-chang-gong-gong-zi-xu-lie/">
         </link>
         <updated>2021-04-03T14:29:33.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -261,7 +261,7 @@ merge、rebase、cherry-pick</p>
 <li>如果text1[i] == text2[j]，那么dp[i][j]就是dp[i-1][j-1]+1</li>
 <li>如果text1[i] != text2[j]，那么dp[i][j]就是text1[0:i]和text2[0:j-1]的最长公共子序列 和 text1[0:i-1]和text2[0:j]的最长公共子序列 中最大的那个。</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://theNefelibata.github.io//post-images/1617460209274.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1617460209274.jpg" alt="" loading="lazy"></figure>
 <h2 id="代码">代码</h2>
 <pre><code class="language-python">class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -&gt; int:
@@ -282,8 +282,8 @@ merge、rebase、cherry-pick</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[java基础]]></title>
-        <id>https://theNefelibata.github.io/post/java-ji-chu/</id>
-        <link href="https://theNefelibata.github.io/post/java-ji-chu/">
+        <id>http://localhost:4000/post/java-ji-chu/</id>
+        <link href="http://localhost:4000/post/java-ji-chu/">
         </link>
         <updated>2021-03-02T08:08:37.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -344,8 +344,8 @@ public class SimpleConstructor2 {
     </entry>
     <entry>
         <title type="html"><![CDATA[对象的概念]]></title>
-        <id>https://theNefelibata.github.io/post/dui-xiang-de-gai-nian/</id>
-        <link href="https://theNefelibata.github.io/post/dui-xiang-de-gai-nian/">
+        <id>http://localhost:4000/post/dui-xiang-de-gai-nian/</id>
+        <link href="http://localhost:4000/post/dui-xiang-de-gai-nian/">
         </link>
         <updated>2021-03-02T06:07:49.000Z</updated>
         <content type="html"><![CDATA[<h2 id="抽象">抽象</h2>
