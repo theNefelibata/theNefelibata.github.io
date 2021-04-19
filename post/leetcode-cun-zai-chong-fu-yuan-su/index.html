@@ -2,7 +2,7 @@
 <html lang="zh-CN">
  <head>
      <meta charset="utf-8" />
-  <title>关于 | theNefelibata</title>
+  <title>LEETCODE 存在重复元素 | theNefelibata</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <link rel="stylesheet" href="https://theNefelibata.github.io//styles/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -81,28 +81,101 @@
      <div class="post-page">
       <div class="post animated fadeInDown">
        <div class="post-title">
-        <h3><a>关于</a></h3>
+        <h3><a>LEETCODE 存在重复元素</a></h3>
        </div>
        <div class="post-content">
-        <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>本站为博主记录学习笔记的场所，有时候可能也会更新一些日记之类的记录生活</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>一个普通人</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>游戏、音乐、技术</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>QQ：735213383</p>
+        <h2 id="ii题目">II题目：</h2>
+<p>给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，使得 nums [i] = nums [j]，并且 i 和 j 的差的 绝对值 至多为 k。</p>
+<pre><code class="language-other">示例 1:
+
+输入: nums = [1,2,3,1], k = 3
+输出: true
+示例 2:
+
+输入: nums = [1,0,1,1], k = 1
+输出: true
+示例 3:
+
+输入: nums = [1,2,3,1,2,3], k = 2
+输出: false
+</code></pre>
+<h2 id="iii题解">III题解：</h2>
+<p>维护一个大小为K的队列Q，遍历nums，如果nums[i]在队列Q中，则返回True，否则，将nums[i]加入队列Q，将Q多余元素出队。</p>
+<figure data-type="image" tabindex="1"><img src="https://res.craft.do/user/preview/3d558d30-7d8a-2616-b1b6-30cf7984eb4b/doc/7237F646-A02F-4975-84A8-2AD1B64CA456/633B44AA-7AA4-4834-850E-92153760C8F0_1" alt="Drawing" loading="lazy"></figure>
+<pre><code class="language-python">class Solution:
+	def containsNearbyDuplicate(self, nums: List[int], k: int) -&gt; bool:
+		queue = []
+		if k == 0:
+			return False
+		for i in nums:
+			if i not in queue:
+				if len(queue) &lt; k:
+					queue.append(i)
+				else:
+					queue.pop(0)
+					queue.append(i)
+			else:
+				return True
+		return False
+</code></pre>
+<h2 id="iii题目">III题目：</h2>
+<p>给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 <code>abs(nums[i] - nums[j]) &lt;= t</code>  ，同时又满足 <code>abs(i - j) &lt;= k</code> 。</p>
+<p>如果存在则返回 true，不存在返回 false。</p>
+<pre><code class="language-python">示例 1：
+
+输入：nums = [1,2,3,1], k = 3, t = 0
+输出：true
+示例 2：
+
+输入：nums = [1,0,1,1], k = 1, t = 2
+输出：true
+示例 3：
+
+输入：nums = [1,5,9,1,5,9], k = 2, t = 3
+输出：false
+</code></pre>
+<h2 id="iii题解-2">III题解</h2>
+<p>从头开始遍历数组，对于当前下标i，为下标为[i-k,i+k]的元素构造桶🪣，对于每个i我们只需看前面是否有无效桶，将nums[i-(k+1)]的桶删除。</p>
+<figure data-type="image" tabindex="2"><img src="https://res.craft.do/user/preview/3d558d30-7d8a-2616-b1b6-30cf7984eb4b/doc/7237F646-A02F-4975-84A8-2AD1B64CA456/C260CF26-75CD-4983-8BF1-2EF05A4F5405_1" alt="Drawing" loading="lazy"></figure>
+<p>对于元素nums[i]，获取当前桶id，如果存在的话说明找到符合条件的元素，如果当前桶没有元素，则比较相邻桶，有元素的话做差比较，如果没找到，将当前元素装入桶中。</p>
+<ul>
+<li>分桶时，如果t=0, 则<code>nums[i]//t</code> 不可行，考虑<code>nums[i]//t+1</code> ;</li>
+<li>若<code>nums[i]&lt;0</code>，进行<code>(x+1)//(t+1)-1</code></li>
+</ul>
+<figure data-type="image" tabindex="3"><img src="https://res.craft.do/user/preview/3d558d30-7d8a-2616-b1b6-30cf7984eb4b/doc/7237F646-A02F-4975-84A8-2AD1B64CA456/E01AEB84-A925-42A0-8406-34CE0294762D_1" alt="Drawing" loading="lazy"></figure>
+<h2 id="iii代码">III代码</h2>
+<pre><code class="language-python">class Solution:
+	def containsNearbyAlmostDuplicate(self, nums: List[int], k: int, t: int) -&gt; bool:
+		def getID(x, t):
+			return (x+1)//(t+1)-1 if x&lt;0 else x//(t+1)
+		
+		n = len(nums)
+		m = {}
+		for i in range(n):
+			x = nums[i]
+			idx = getID(x, t)
+			if idx in m:
+				return True
+			l , r = idx-1, idx+1
+			if l in m and abs(x - m[l]) &lt;= t:
+				return True
+			if r in m and abs(x - m[r]) &lt;= t:
+				return True
+			m[idx] = x
+			if i &gt;= k:
+				m.pop(getID(nums[i-k],t))
+		return False
+</code></pre>
 
        </div>
        <div class="post-footer">
         <div class="meta">
          <div class="info">
           <i class="fa fa-sun-o"></i>
-          <span class="date">2019-01-25</span>
+          <span class="date">2021-04-19</span>
           <i class="fa fa-tag"></i>
+          
+          <a class="tag" href="https://theNefelibata.github.io/tag/jPPt7ANbM/" title="leetcode">leetcode </a>
           
          </div>
         </div>
@@ -116,12 +189,14 @@
         <a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a>
        </div>
        <div class="twitter">
-        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://theNefelibata.github.io/post/about/,;"></a>
+        <a class="fa fa-twitter" href="http://twitter.com/home?status=,https://theNefelibata.github.io/post/leetcode-cun-zai-chong-fu-yuan-su/,;"></a>
        </div>
       </div>
       <div class="pagination">
        <ul class="clearfix">
 
+        
+        <li class="next pagbuttons"><a class="btn" role="navigation" href="https://theNefelibata.github.io/post/git-ji-chu/" title=" Git基础">下一篇</a></li>
         
        </ul>
       </div>
