@@ -2,7 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://localhost:4000</id>
     <title>theNefelibata</title>
+<<<<<<< HEAD
     <updated>2021-04-19T15:32:36.863Z</updated>
+=======
+    <updated>2021-04-04T10:05:16.105Z</updated>
+>>>>>>> parent of 3ecb460 (update from gridea: 2021-04-19 23:31:58)
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://localhost:4000"/>
     <link rel="self" href="http://localhost:4000/atom.xml"/>
@@ -11,6 +15,7 @@
     <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2021, theNefelibata</rights>
     <entry>
+<<<<<<< HEAD
         <title type="html"><![CDATA[LEETCODE 存在重复元素]]></title>
         <id>http://localhost:4000/post/leetcode-cun-zai-chong-fu-yuan-su/</id>
         <link href="http://localhost:4000/post/leetcode-cun-zai-chong-fu-yuan-su/">
@@ -101,6 +106,8 @@
 ]]></content>
     </entry>
     <entry>
+=======
+>>>>>>> parent of 3ecb460 (update from gridea: 2021-04-19 23:31:58)
         <title type="html"><![CDATA[Git基础]]></title>
         <id>http://localhost:4000/post/git-ji-chu/</id>
         <link href="http://localhost:4000/post/git-ji-chu/">
